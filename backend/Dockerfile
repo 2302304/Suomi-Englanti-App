@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3001
+# Expose the port that Railway provides
+EXPOSE 8080
 
-CMD ["npm", "run", "dev"]
+# Run migrations and start the server
+CMD ["sh", "-c", "npm run migrate && npm run dev"]
