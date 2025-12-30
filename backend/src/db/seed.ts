@@ -17,6 +17,15 @@ async function seedDatabase() {
   console.log('🌱 Starting database seeding...\n');
 
   try {
+    // Check if database is already seeded
+    const result = await pool.query('SELECT COUNT(*) FROM words');
+    const wordCount = parseInt(result.rows[0].count);
+
+    if (wordCount > 0) {
+      console.log(`✅ Database already seeded with ${wordCount} words. Skipping seed.\n`);
+      return;
+    }
+
     // Load seed data
     const wordsPath = join(__dirname, 'seeds/001_words.json');
     const sentencesPath = join(__dirname, 'seeds/002_sentences.json');

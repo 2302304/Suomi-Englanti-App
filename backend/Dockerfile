@@ -11,5 +11,5 @@ COPY . .
 # Expose the port that Railway provides
 EXPOSE 8080
 
-# Start the server (migrations already completed)
-CMD ["npm", "run", "dev"]
+# Run migrations, seed data, and start the server
+CMD ["sh", "-c", "npm run migrate; npm run seed; npm run dev"]

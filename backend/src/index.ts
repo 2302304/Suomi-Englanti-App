@@ -47,20 +47,6 @@ app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Seed database endpoint (temporary - call once to populate database)
-app.post('/api/seed', async (req: Request, res: Response) => {
-  try {
-    const { exec } = require('child_process');
-    const { promisify } = require('util');
-    const execAsync = promisify(exec);
-
-    const { stdout, stderr } = await execAsync('npm run seed');
-    res.json({ success: true, output: stdout, error: stderr });
-  } catch (error: any) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/words', wordsRoutes);
