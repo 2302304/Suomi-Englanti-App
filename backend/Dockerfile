@@ -6,7 +6,11 @@ COPY package*.json ./
 
 RUN npm install
 
+# Copy all source files
 COPY . .
+
+# Ensure seed files are copied
+COPY src/db/seeds/*.json ./src/db/seeds/
 
 # Expose the port that Railway provides
 EXPOSE 8080
