@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS word_sentences (
 );
 
 -- Create indexes for fast lookups
-CREATE INDEX idx_word_sentences_word ON word_sentences(word_id);
-CREATE INDEX idx_word_sentences_sentence ON word_sentences(sentence_id);
+CREATE INDEX IF NOT EXISTS idx_word_sentences_word ON word_sentences(word_id);
+CREATE INDEX IF NOT EXISTS idx_word_sentences_sentence ON word_sentences(sentence_id);

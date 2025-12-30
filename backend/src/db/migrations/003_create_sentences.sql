@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS sentences (
 );
 
 -- Create index for difficulty-based queries
-CREATE INDEX idx_sentences_difficulty ON sentences(difficulty_level);
+CREATE INDEX IF NOT EXISTS idx_sentences_difficulty ON sentences(difficulty_level);

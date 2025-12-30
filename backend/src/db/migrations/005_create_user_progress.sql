@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS user_progress (
 );
 
 -- Create indexes for efficient queries
-CREATE INDEX idx_user_progress_user ON user_progress(user_id);
-CREATE INDEX idx_user_progress_word ON user_progress(word_id);
-CREATE INDEX idx_user_progress_next_review ON user_progress(next_review);
-CREATE INDEX idx_user_progress_user_next_review ON user_progress(user_id, next_review);
+CREATE INDEX IF NOT EXISTS idx_user_progress_user ON user_progress(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_progress_word ON user_progress(word_id);
+CREATE INDEX IF NOT EXISTS idx_user_progress_next_review ON user_progress(next_review);
+CREATE INDEX IF NOT EXISTS idx_user_progress_user_next_review ON user_progress(user_id, next_review);

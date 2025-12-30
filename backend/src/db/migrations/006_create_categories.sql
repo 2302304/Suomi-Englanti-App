@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS word_categories (
 );
 
 -- Create indexes
-CREATE INDEX idx_word_categories_word ON word_categories(word_id);
-CREATE INDEX idx_word_categories_category ON word_categories(category_id);
+CREATE INDEX IF NOT EXISTS idx_word_categories_word ON word_categories(word_id);
+CREATE INDEX IF NOT EXISTS idx_word_categories_category ON word_categories(category_id);
