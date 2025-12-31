@@ -18,5 +18,6 @@ EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
   CMD node -e "require('http').get('http://localhost:8080/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
-# Start the server
-CMD ["npm", "run", "dev"]
+# Start the server with migrations and seed (first deployment only)
+# After successful deployment, change back to: CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "npm run migrate && npm run seed && npm run dev"]
