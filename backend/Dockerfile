@@ -8,8 +8,9 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy all source files including seed data
-COPY . .
+# Copy all source files
+COPY src ./src
+COPY tsconfig.json ./
 
 # Expose the port that Railway provides
 EXPOSE 8080
